@@ -1,0 +1,12 @@
+{
+    "author": "Ivan Bacharnikov",
+    "position": "Frontend/Flutter developer",
+    "age": "Age",
+    "city": "City",
+    "email": "Email",
+    "tg": "Telegram",
+    "github": "GitHub",
+    "anotherLanguage": "Переключиться на русский",
+    "lightTheme": "Light theme",
+    "darkTheme": "Dark theme"
+}

@@ -16,9 +16,10 @@ class LangButton extends StatelessWidget {
     return IconButton(
       onPressed: () => onChangeLocale(locale.next),
       icon: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(seconds: 1),
         child: isEn
             ? Tooltip(
+                key: const ValueKey('ru'),
                 message: localization.anotherLanguage,
                 child: CircleAvatar(
                   maxRadius: size,
@@ -27,10 +28,10 @@ class LangButton extends StatelessWidget {
                     width: size,
                     height: size,
                   ).image,
-                  key: const ValueKey('ru'),
                 ),
               )
             : Tooltip(
+                key: const ValueKey('gb'),
                 message: localization.anotherLanguage,
                 child: CircleAvatar(
                   maxRadius: size,
@@ -39,7 +40,6 @@ class LangButton extends StatelessWidget {
                     width: size,
                     height: size,
                   ).image,
-                  key: const ValueKey('gb'),
                 ),
               ),
       ),

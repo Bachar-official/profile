@@ -26,6 +26,13 @@ class ProfileScreen extends ConsumerWidget {
           ThemeButton(theme: state.themes, onChangeTheme: manager.setThemes),
         ],
       ),
+      body: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(flex: 1, child: BioWidget()),
+          Expanded(flex: 3, child: Text('AAAAAAAAAAAAAA')),
+        ],
+      ),
     );
   }
 }

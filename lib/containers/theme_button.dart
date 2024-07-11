@@ -13,20 +13,20 @@ class ThemeButton extends StatelessWidget {
     final locale = AppLocalizations.of(context);
     return IconButton(
       icon: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(seconds: 1),
         child: theme == Themes.light
             ? Tooltip(
-                message: locale.lightTheme,
-                child: const Icon(
-                  Icons.light_mode,
-                  key: ValueKey('light'),
-                ),
-              )
-            : Tooltip(
+                key: const ValueKey('light'),
                 message: locale.darkTheme,
                 child: const Icon(
                   Icons.dark_mode,
-                  key: ValueKey('dark'),
+                ),
+              )
+            : Tooltip(
+                key: const ValueKey('dark'),
+                message: locale.lightTheme,
+                child: const Icon(
+                  Icons.light_mode,
                 ),
               ),
       ),

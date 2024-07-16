@@ -13,6 +13,7 @@ class BioWidget extends StatelessWidget {
         brightness == Brightness.dark ? Colors.white : Colors.black,
         BlendMode.srcIn);
     const size = 30.0;
+    const padding = EdgeInsets.symmetric(horizontal: 10.0);
 
     return Card(
       child: Column(
@@ -26,15 +27,29 @@ class BioWidget extends StatelessWidget {
               width: 400,
             ),
           ),
-          FractionallySizedBox(
-            child: FittedBox(
-              fit: BoxFit.fitWidth,
-              child: Text(localize.author, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: size),),
+          Padding(
+            padding: padding,
+            child: FractionallySizedBox(
+              child: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Text(
+                  localize.author,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: size),
+                ),
+              ),
             ),
           ),
-          FittedBox(
-            fit: BoxFit.fitWidth,
-            child: Text(localize.position, style: const TextStyle(fontStyle: FontStyle.italic, fontSize: size),),
+          Padding(
+            padding: padding,
+            child: FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Text(
+                localize.position,
+                style: const TextStyle(
+                    fontStyle: FontStyle.italic, fontSize: size),
+              ),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

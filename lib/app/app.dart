@@ -15,24 +15,10 @@ class App extends ConsumerWidget {
   Widget build(context, ref) {
     final state = ref.watch(provider);
     return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 500),
-      transitionBuilder: (Widget child, Animation<double> animation) {
-        final offsetAnimation = Tween<Offset>(
-          begin: const Offset(1.0, 0.0),
-          end: const Offset(0.0, 0.0),
-        ).animate(animation);
-
-        return SlideTransition(
-          position: offsetAnimation,
-          child: FadeTransition(
-            opacity: animation,
-            child: child,
-          ),
-        );
-      },
-
+      duration: const Duration(seconds: 1),
       child: MaterialApp(
-        key: ValueKey(state.locales.locale),
+        key: ValueKey(
+            state.locales.locale.hashCode + state.themes.theme.hashCode),
         debugShowCheckedModeBanner: false,
         title: 'Ivan Bacharnikov',
         home: const ProfileScreen(),

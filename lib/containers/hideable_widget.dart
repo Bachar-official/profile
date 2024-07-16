@@ -13,6 +13,7 @@ class HideableWidget extends StatelessWidget {
 
     return Card(
       child: ExpansionTile(
+          childrenPadding: const EdgeInsets.all(10.0),
           title: Text(
             title,
             style: const TextStyle(fontWeight: FontWeight.bold),

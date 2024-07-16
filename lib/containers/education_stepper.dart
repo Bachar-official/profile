@@ -16,16 +16,19 @@ class EducationStepper extends StatelessWidget {
       stepIconMargin: EdgeInsets.zero,
       controlsBuilder: (_, __) => Container(),
       steps: eds
-          .map((ed) => Step(
-                isActive: true,
-                title: ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(ed.institutionName),
-                  subtitle: Text('${ParseUtils.parseGradeDate(ed.gradeDate, localeCode)} · ${ed.specialization}'),
-                ),
-                subtitle: Text(ed.qualification),
-                content: Container(),
-              ))
+          .map(
+            (ed) => Step(
+              isActive: true,
+              title: ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(ed.institutionName),
+                subtitle: Text(
+                    '${ParseUtils.parseGradeDate(ed.gradeDate, localeCode)} · ${ed.specialization}'),
+              ),
+              subtitle: Text(ed.qualification),
+              content: Container(),
+            ),
+          )
           .toList(),
     );
   }

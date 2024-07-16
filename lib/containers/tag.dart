@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
-class SkillTag extends StatelessWidget {
-  final String skill;
-  const SkillTag({super.key, required this.skill});
+class Tag extends StatelessWidget {
+  final String text;
+  final Color? color;
+  const Tag({super.key, required this.text, this.color});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
       decoration: BoxDecoration(
-        color: Colors.green,
+        color: color ?? Colors.green,
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: Text(
-        skill,
+        text,
         style: const TextStyle(
           color: Colors.white,
           fontSize: 16.0,

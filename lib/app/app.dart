@@ -14,20 +14,15 @@ class App extends ConsumerWidget {
   @override
   Widget build(context, ref) {
     final state = ref.watch(provider);
-    return AnimatedSwitcher(
-      duration: const Duration(seconds: 1),
-      child: MaterialApp(
-        key: ValueKey(
-            state.locales.locale.hashCode + state.themes.theme.hashCode),
-        debugShowCheckedModeBanner: false,
-        title: 'Ivan Bacharnikov',
-        home: const ProfileScreen(),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        theme: state.themes.theme,
-        locale: state.locales.locale,
-        scaffoldMessengerKey: di.scaffoldKey,
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Ivan Bacharnikov',
+      home: const ProfileScreen(),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      theme: state.themes.theme,
+      locale: state.locales.locale,
+      scaffoldMessengerKey: di.scaffoldKey,
     );
   }
 }

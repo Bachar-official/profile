@@ -3,7 +3,8 @@ import 'package:profile/profile_screen/profile_holder.dart';
 import 'package:profile/profile_screen/profile_manager.dart';
 
 class DI {
-  final GlobalKey<ScaffoldMessengerState> scaffoldKey = GlobalKey();
+  final GlobalKey<ScaffoldMessengerState> scaffoldKey =
+      GlobalKey<ScaffoldMessengerState>();
   late final ProfileHolder holder;
   late final ProfileManager manager;
 

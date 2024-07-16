@@ -1,4 +1,6 @@
 {
+    "@@locale": "en",
+    "code": "en",
     "author": "Ivan Bacharnikov",
     "position": "Frontend/Flutter developer",
     "age": "Age",
@@ -8,5 +10,15 @@
     "github": "GitHub",
     "anotherLanguage": "Переключиться на русский",
     "lightTheme": "Light theme",
-    "darkTheme": "Dark theme"
+    "darkTheme": "Dark theme",
+    "experience": "Experience",
+    "education": "Education",
+    "languages": "Languages",
+    "hobbies": "Hobbies",
+    "cources": "Cources",
+    "hardSkills": "Hard skills",
+    "currentCity": "Orenburg, Russia",
+    "untilNow": "Until now",
+    "exp0": "Cinimex:Frontend Developer:Frontend development in various design systems for the banking sector:2019-10-01",
+    "exp1": "Orenburg State University:Senior Lecturer:Taught the disciplines \"Development of mobile applications (Flutter)\" and \"Development of client web applications (React)\":2023-09-01:2023-12-01"
 }

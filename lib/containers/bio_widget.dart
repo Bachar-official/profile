@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:profile/constants/bio_info.dart';
 import 'package:profile/containers/icon_row.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BioWidget extends StatelessWidget {
   const BioWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final localize = AppLocalizations.of(context);
     final brightness = Theme.of(context).brightness;
     final filter = ColorFilter.mode(
         brightness == Brightness.dark ? Colors.white : Colors.black,
@@ -21,6 +23,15 @@ class BioWidget extends StatelessWidget {
           Image.asset(
             'assets/photos/avatar.png',
             fit: BoxFit.fitWidth,
+          ),
+          IconRow(
+            icon: SvgPicture.asset(
+              '/services/location.svg',
+              width: size,
+              height: size,
+              colorFilter: filter,
+            ),
+            text: localize.currentCity,
           ),
           IconRow(
               icon: SvgPicture.asset(

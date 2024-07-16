@@ -14,14 +14,33 @@ class App extends ConsumerWidget {
   @override
   Widget build(context, ref) {
     final state = ref.watch(provider);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Ivan Bacharnikov',
-      home: const ProfileScreen(),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      theme: state.themes.theme,
-      locale: state.locales.locale,
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 500),
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        final offsetAnimation = Tween<Offset>(
+          begin: const Offset(1.0, 0.0),
+          end: const Offset(0.0, 0.0),
+        ).animate(animation);
+
+        return SlideTransition(
+          position: offsetAnimation,
+          child: FadeTransition(
+            opacity: animation,
+            child: child,
+          ),
+        );
+      },
+
+      child: MaterialApp(
+        key: ValueKey(state.locales.locale),
+        debugShowCheckedModeBanner: false,
+        title: 'Ivan Bacharnikov',
+        home: const ProfileScreen(),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        theme: state.themes.theme,
+        locale: state.locales.locale,
+      ),
     );
   }
 }

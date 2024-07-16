@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:profile/app/di.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:profile/constants/constants.dart';
+import 'package:profile/containers/experience_tile.dart';
 import 'package:profile/containers/index.dart';
 import './profile_holder.dart';
 import './profile_state.dart';
@@ -28,9 +30,51 @@ class ProfileScreen extends ConsumerWidget {
       ),
       body: Row(
         mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(flex: 1, child: BioWidget()),
-          Expanded(flex: 3, child: Text('AAAAAAAAAAAAAA')),
+          const Expanded(
+            flex: 1,
+            child: BioWidget(),
+          ),
+          Expanded(
+            flex: 3,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Position(),
+                  HideableWidget(
+                    title: locale.experience,
+                    content: [
+                      ExperienceTile(
+                        localeCode: locale.code,
+                        localeString: locale.exp0,
+                        untilNow: locale.untilNow,
+                      ),
+                      ExperienceTile(
+                        localeCode: locale.code,
+                        localeString: locale.exp1,
+                        untilNow: locale.untilNow,
+                      ),
+                    ],
+                  ),
+                  HideableWidget(
+                    isRow: true,
+                    title: locale.hardSkills,
+                    content: hardSkills
+                        .map((skill) => SkillTag(skill: skill))
+                        .toList(),
+                  ),
+                  HideableWidget(title: locale.education, content: []),
+                  HideableWidget(title: locale.cources, content: []),
+                  HideableWidget(title: locale.languages, content: []),
+                  HideableWidget(title: locale.hobbies, content: []),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

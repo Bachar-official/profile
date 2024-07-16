@@ -7,4 +7,8 @@ class ParseUtils {
     }
     return DateFormat.yMMMM(localeCode).format(date);
   }
+
+  static String parseGradeDate(DateTime date, String localeCode) {
+    return DateFormat.yMMMM(localeCode).format(date);
+  }
 }

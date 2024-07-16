@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:profile/app/di.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:profile/constants/constants.dart';
-import 'package:profile/containers/experience_tile.dart';
 import 'package:profile/containers/index.dart';
 import './profile_holder.dart';
 import './profile_state.dart';
@@ -19,6 +18,42 @@ class ProfileScreen extends ConsumerWidget {
     final state = ref.watch(provider);
     final manager = di.manager;
     final locale = AppLocalizations.of(context);
+    final orientation = MediaQuery.of(context).orientation;
+    final isPortrait = orientation == Orientation.portrait;
+
+    const bioWidget = BioWidget();
+    const positionWidget = Position();
+    final experienceWidget = HideableWidget(
+      title: locale.experience,
+      content: [
+        ExperienceTile(
+          localeCode: locale.code,
+          localeString: locale.exp0,
+          untilNow: locale.untilNow,
+        ),
+        ExperienceTile(
+          localeCode: locale.code,
+          localeString: locale.exp1,
+          untilNow: locale.untilNow,
+        ),
+      ],
+    );
+    final educationWidget = HideableWidget(
+      title: locale.education,
+      content: [
+        EducationTile(localeCode: locale.code, localeString: locale.ed0),
+        EducationTile(localeCode: locale.code, localeString: locale.ed1),
+      ],
+    );
+    final skillsWidget = HideableWidget(
+      isRow: true,
+      title: locale.hardSkills,
+      content: hardSkills.map((skill) => SkillTag(skill: skill)).toList(),
+    );
+    final courcesWidget = HideableWidget(title: locale.cources, content: []);
+    final languagesWidget =
+        HideableWidget(title: locale.languages, content: []);
+    final hobbiesWidget = HideableWidget(title: locale.hobbies, content: []);
 
     return Scaffold(
       appBar: AppBar(
@@ -28,55 +63,57 @@ class ProfileScreen extends ConsumerWidget {
           ThemeButton(theme: state.themes, onChangeTheme: manager.setThemes),
         ],
       ),
-      body: Row(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Expanded(
-            flex: 1,
-            child: BioWidget(),
-          ),
-          Expanded(
-            flex: 3,
-            child: SingleChildScrollView(
+      body: isPortrait
+          ? SingleChildScrollView(
               child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const Position(),
-                  HideableWidget(
-                    title: locale.experience,
-                    content: [
-                      ExperienceTile(
-                        localeCode: locale.code,
-                        localeString: locale.exp0,
-                        untilNow: locale.untilNow,
-                      ),
-                      ExperienceTile(
-                        localeCode: locale.code,
-                        localeString: locale.exp1,
-                        untilNow: locale.untilNow,
-                      ),
+                  bioWidget,
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      positionWidget,
+                      experienceWidget,
+                      educationWidget,
+                      skillsWidget,
+                      courcesWidget,
+                      languagesWidget,
+                      hobbiesWidget,
                     ],
                   ),
-                  HideableWidget(
-                    isRow: true,
-                    title: locale.hardSkills,
-                    content: hardSkills
-                        .map((skill) => SkillTag(skill: skill))
-                        .toList(),
-                  ),
-                  HideableWidget(title: locale.education, content: []),
-                  HideableWidget(title: locale.cources, content: []),
-                  HideableWidget(title: locale.languages, content: []),
-                  HideableWidget(title: locale.hobbies, content: []),
                 ],
               ),
+            )
+          : Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Expanded(
+                  flex: 1,
+                  child: bioWidget,
+                ),
+                Expanded(
+                  flex: 3,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        positionWidget,
+                        experienceWidget,
+                        educationWidget,
+                        skillsWidget,
+                        courcesWidget,
+                        languagesWidget,
+                        hobbiesWidget,
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }

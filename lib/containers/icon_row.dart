@@ -10,8 +10,9 @@ class IconRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        icon,
+        Flexible(flex: 2, child: icon),
         Flexible(
+          flex: 3,
           child: Text(
             text,
             overflow: TextOverflow.ellipsis,

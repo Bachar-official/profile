@@ -13,7 +13,10 @@ class HideableWidget extends StatelessWidget {
 
     return Card(
       child: ExpansionTile(
-          title: Text(title),
+          title: Text(
+            title,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
           children: isRowEnabled
               ? [
                   Wrap(

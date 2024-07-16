@@ -20,9 +20,12 @@ class BioWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset(
-            'assets/photos/avatar.png',
-            fit: BoxFit.fitWidth,
+          FractionallySizedBox(
+            child: Image.asset(
+              'assets/photos/avatar.png',
+              fit: BoxFit.fitWidth,
+              width: 400,
+            ),
           ),
           IconRow(
             icon: SvgPicture.asset(

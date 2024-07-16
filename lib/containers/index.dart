@@ -5,3 +5,4 @@ export './position.dart';
 export './hideable_widget.dart';
 export './experience_tile.dart';
 export './skill_tag.dart';
+export './education_tile.dart';

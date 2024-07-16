@@ -23,6 +23,7 @@ class ProfileScreen extends ConsumerWidget {
 
     const bioWidget = BioWidget();
     final experienceWidget = HideableWidget(
+      controller: manager.experienceC,
       title: locale.experience,
       content: [
         ExperienceStepper(
@@ -32,6 +33,7 @@ class ProfileScreen extends ConsumerWidget {
       ],
     );
     final educationWidget = HideableWidget(
+      controller: manager.educationC,
       title: locale.education,
       content: [
         EducationStepper(
@@ -39,11 +41,13 @@ class ProfileScreen extends ConsumerWidget {
       ],
     );
     final skillsWidget = HideableWidget(
+      controller: manager.skillsC,
       isRow: true,
       title: locale.hardSkills,
       content: hardSkills.map((skill) => Tag(text: skill)).toList(),
     );
     final courcesWidget = HideableWidget(
+      controller: manager.coursesC,
       title: locale.cources,
       content: courses
           .map(
@@ -52,12 +56,14 @@ class ProfileScreen extends ConsumerWidget {
           .toList(),
     );
     final languagesWidget = HideableWidget(
+      controller: manager.langC,
       title: locale.languages,
       content: [locale.lg0, locale.lg1, locale.lg2]
           .map((lg) => LanguageTile(localeString: lg))
           .toList(),
     );
     final hobbiesWidget = HideableWidget(
+      controller: manager.hobbiesC,
       isRow: true,
       title: locale.hobbies,
       content: locale.allHobbies
@@ -71,6 +77,11 @@ class ProfileScreen extends ConsumerWidget {
         actions: [
           LangButton(locale: state.locales, onChangeLocale: manager.setLocales),
           ThemeButton(theme: state.themes, onChangeTheme: manager.setThemes),
+          ExpandButton(
+            isCollapsed: true,
+            onCollapse: manager.collapseAll,
+            onExpand: manager.expandAll,
+          ),
         ],
       ),
       body: isPortrait

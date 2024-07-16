@@ -26,6 +26,7 @@ class App extends ConsumerWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         theme: state.themes.theme,
         locale: state.locales.locale,
+        scaffoldMessengerKey: di.scaffoldKey,
       ),
     );
   }

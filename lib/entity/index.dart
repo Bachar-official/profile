@@ -1,2 +1,2 @@
-export './education.dart';
-export './experience.dart';
+export 'education.dart';
+export 'experience.dart';

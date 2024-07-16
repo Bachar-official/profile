@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:profile/constants/constants.dart';
 import 'package:profile/constants/urls.dart';

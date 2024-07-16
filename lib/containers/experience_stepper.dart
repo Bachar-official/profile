@@ -28,6 +28,7 @@ class ExperienceStepper extends StatelessWidget {
                 title: Text(xp.companyName),
                 subtitle: Text(
                     '${ParseUtils.parseDate(xp.from, localeCode, untilNow)} - ${ParseUtils.parseDate(xp.to, localeCode, untilNow)}'),
+                trailing: Text(xp.position),
               ),
               subtitle: Text(xp.description),
               content: Container(),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HideableWidget extends StatelessWidget {
-  final ExpansionTileController controller;
+  final ExpansionTileController? controller;
   final String title;
   final bool? isRow;
   final List<Widget> content;
@@ -10,7 +10,7 @@ class HideableWidget extends StatelessWidget {
       required this.content,
       required this.title,
       this.isRow,
-      required this.controller});
+      this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +18,8 @@ class HideableWidget extends StatelessWidget {
 
     return Card(
       child: ExpansionTile(
-          controller: controller,
           maintainState: true,
+          controller: controller,
           childrenPadding: const EdgeInsets.all(10.0),
           title: Text(
             title,

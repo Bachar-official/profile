@@ -3,7 +3,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BioWidget extends StatelessWidget {
-  const BioWidget({super.key});
+  final Future<void> Function() onOpenGithub;
+  final Future<void> Function() onOpenTelegram;
+  final Future<void> Function() onOpenEmail;
+  const BioWidget(
+      {super.key,
+      required this.onOpenGithub,
+      required this.onOpenTelegram,
+      required this.onOpenEmail});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +62,7 @@ class BioWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: onOpenTelegram,
                 icon: SvgPicture.asset(
                   'services/telegram.svg',
                   width: size,
@@ -64,7 +71,7 @@ class BioWidget extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: onOpenEmail,
                 icon: SvgPicture.asset(
                   'services/email.svg',
                   width: size,
@@ -73,7 +80,7 @@ class BioWidget extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: onOpenGithub,
                 icon: SvgPicture.asset(
                   'services/github.svg',
                   width: size,

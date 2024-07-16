@@ -18,12 +18,13 @@ class ProfileScreen extends ConsumerWidget {
     final state = ref.watch(provider);
     final manager = di.manager;
     final locale = AppLocalizations.of(context);
-    final orientation = MediaQuery.of(context).orientation;
-    final isPortrait = orientation == Orientation.portrait;
 
-    const bioWidget = BioWidget();
+    final bioWidget = BioWidget(
+      onOpenEmail: manager.openEmail,
+      onOpenGithub: manager.openGithub,
+      onOpenTelegram: manager.openTelegram,
+    );
     final experienceWidget = HideableWidget(
-      controller: manager.experienceC,
       title: locale.experience,
       content: [
         ExperienceStepper(
@@ -33,7 +34,7 @@ class ProfileScreen extends ConsumerWidget {
       ],
     );
     final educationWidget = HideableWidget(
-      controller: manager.educationC,
+      // controller: manager.educationC,
       title: locale.education,
       content: [
         EducationStepper(
@@ -41,13 +42,13 @@ class ProfileScreen extends ConsumerWidget {
       ],
     );
     final skillsWidget = HideableWidget(
-      controller: manager.skillsC,
+      // controller: manager.skillsC,
       isRow: true,
       title: locale.hardSkills,
       content: hardSkills.map((skill) => Tag(text: skill)).toList(),
     );
     final courcesWidget = HideableWidget(
-      controller: manager.coursesC,
+      // controller: manager.coursesC,
       title: locale.cources,
       content: courses
           .map(
@@ -56,14 +57,14 @@ class ProfileScreen extends ConsumerWidget {
           .toList(),
     );
     final languagesWidget = HideableWidget(
-      controller: manager.langC,
+      // controller: manager.langC,
       title: locale.languages,
       content: [locale.lg0, locale.lg1, locale.lg2]
           .map((lg) => LanguageTile(localeString: lg))
           .toList(),
     );
     final hobbiesWidget = HideableWidget(
-      controller: manager.hobbiesC,
+      // controller: manager.hobbiesC,
       isRow: true,
       title: locale.hobbies,
       content: locale.allHobbies
@@ -77,62 +78,61 @@ class ProfileScreen extends ConsumerWidget {
         actions: [
           LangButton(locale: state.locales, onChangeLocale: manager.setLocales),
           ThemeButton(theme: state.themes, onChangeTheme: manager.setThemes),
-          ExpandButton(
-            isCollapsed: true,
-            onCollapse: manager.collapseAll,
-            onExpand: manager.expandAll,
-          ),
         ],
       ),
-      body: isPortrait
-          ? SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  bioWidget,
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          return orientation == Orientation.landscape
+              ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: bioWidget,
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            experienceWidget,
+                            educationWidget,
+                            skillsWidget,
+                            courcesWidget,
+                            languagesWidget,
+                            hobbiesWidget,
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              : SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      experienceWidget,
-                      educationWidget,
-                      skillsWidget,
-                      courcesWidget,
-                      languagesWidget,
-                      hobbiesWidget,
+                      bioWidget,
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          experienceWidget,
+                          educationWidget,
+                          skillsWidget,
+                          courcesWidget,
+                          languagesWidget,
+                          hobbiesWidget,
+                        ],
+                      ),
                     ],
                   ),
-                ],
-              ),
-            )
-          : Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Expanded(
-                  flex: 1,
-                  child: bioWidget,
-                ),
-                Expanded(
-                  flex: 3,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        experienceWidget,
-                        educationWidget,
-                        skillsWidget,
-                        courcesWidget,
-                        languagesWidget,
-                        hobbiesWidget,
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+                );
+        },
+      ),
     );
   }
 }

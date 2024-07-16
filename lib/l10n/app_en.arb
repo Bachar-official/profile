@@ -26,5 +26,7 @@
     "lg0": "Russian:ru:Native",
     "lg1": "English:en:B1 (Intermediate)",
     "lg2": "Esperanto:eo:A1 (Beginner)",
-    "allHobbies": "Radio amateur,Cyclist,Photographer,YouTuber,Quadcopter pilot"
+    "allHobbies": "Radio amateur,Cyclist,Photographer,YouTuber,Quadcopter pilot",
+    "collapseAll": "Collapse all",
+    "expandAll": "Expand all"
 }

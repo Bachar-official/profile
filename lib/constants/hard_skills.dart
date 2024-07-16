@@ -1,6 +1,6 @@
 const hardSkills = [
   'React',
-  'Java Script',
+  'JavaScript',
   'Redux',
   'TypeScript',
   'JSON',

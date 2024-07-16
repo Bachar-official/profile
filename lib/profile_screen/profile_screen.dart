@@ -4,6 +4,7 @@ import 'package:profile/app/di.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:profile/constants/constants.dart';
 import 'package:profile/containers/index.dart';
+import 'package:profile/entity/experience.dart';
 import './profile_holder.dart';
 import './profile_state.dart';
 
@@ -22,27 +23,16 @@ class ProfileScreen extends ConsumerWidget {
     final isPortrait = orientation == Orientation.portrait;
 
     const bioWidget = BioWidget();
-    const positionWidget = Position();
     final experienceWidget = HideableWidget(
       title: locale.experience,
       content: [
-        ExperienceTile(
-          localeCode: locale.code,
-          localeString: locale.exp0,
-          untilNow: locale.untilNow,
-        ),
-        ExperienceTile(
-          localeCode: locale.code,
-          localeString: locale.exp1,
-          untilNow: locale.untilNow,
-        ),
+        ExperienceStepper(localeCode: locale.code, localeStrings: [locale.exp0, locale.exp1], untilNow: locale.untilNow),
       ],
     );
     final educationWidget = HideableWidget(
       title: locale.education,
       content: [
-        EducationTile(localeCode: locale.code, localeString: locale.ed0),
-        EducationTile(localeCode: locale.code, localeString: locale.ed1),
+        EducationStepper(localeCode: locale.code, localeStrings: [locale.ed0, locale.ed1]),
       ],
     );
     final skillsWidget = HideableWidget(
@@ -57,7 +47,6 @@ class ProfileScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(locale.author),
         actions: [
           LangButton(locale: state.locales, onChangeLocale: manager.setLocales),
           ThemeButton(theme: state.themes, onChangeTheme: manager.setThemes),
@@ -74,7 +63,6 @@ class ProfileScreen extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      positionWidget,
                       experienceWidget,
                       educationWidget,
                       skillsWidget,
@@ -101,7 +89,6 @@ class ProfileScreen extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        positionWidget,
                         experienceWidget,
                         educationWidget,
                         skillsWidget,

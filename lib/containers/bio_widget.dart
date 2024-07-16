@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:profile/constants/bio_info.dart';
-import 'package:profile/containers/icon_row.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BioWidget extends StatelessWidget {
@@ -19,6 +17,7 @@ class BioWidget extends StatelessWidget {
     return Card(
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           FractionallySizedBox(
             child: Image.asset(
@@ -27,39 +26,48 @@ class BioWidget extends StatelessWidget {
               width: 400,
             ),
           ),
-          IconRow(
-            icon: SvgPicture.asset(
-              '/services/location.svg',
-              width: size,
-              height: size,
-              colorFilter: filter,
+          FractionallySizedBox(
+            child: FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Text(localize.author, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: size),),
             ),
-            text: localize.currentCity,
           ),
-          IconRow(
-              icon: SvgPicture.asset(
-                'services/telegram.svg',
-                width: size,
-                height: size,
-                colorFilter: filter,
+          FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Text(localize.position, style: const TextStyle(fontStyle: FontStyle.italic, fontSize: size),),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: SvgPicture.asset(
+                  'services/telegram.svg',
+                  width: size,
+                  height: size,
+                  colorFilter: filter,
+                ),
               ),
-              text: BioInfo.telegram),
-          IconRow(
-              icon: SvgPicture.asset(
-                'services/email.svg',
-                width: size,
-                height: size,
-                colorFilter: filter,
+              IconButton(
+                onPressed: () {},
+                icon: SvgPicture.asset(
+                  'services/email.svg',
+                  width: size,
+                  height: size,
+                  colorFilter: filter,
+                ),
               ),
-              text: BioInfo.email),
-          IconRow(
-              icon: SvgPicture.asset(
-                'services/github.svg',
-                width: size,
-                height: size,
-                colorFilter: filter,
+              IconButton(
+                onPressed: () {},
+                icon: SvgPicture.asset(
+                  'services/github.svg',
+                  width: size,
+                  height: size,
+                  colorFilter: filter,
+                ),
               ),
-              text: BioInfo.github),
+            ],
+          ),
         ],
       ),
     );

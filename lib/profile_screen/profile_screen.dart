@@ -93,13 +93,6 @@ class ProfileScreen extends ConsumerWidget {
     );
 
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      floatingActionButton: ExpandButton(
-        isFloatingActionButton: true,
-        key: const ValueKey('button'),
-        onExpandOrCollapse: manager.expandOrCollapseAll,
-        isCollapsed: state.isCollapsed,
-      ),
       appBar: AppBar(
         actions: [
           LangButton(locale: state.locales, onChangeLocale: manager.setLocales),
@@ -111,6 +104,13 @@ class ProfileScreen extends ConsumerWidget {
               icon: const Icon(Icons.contact_mail),
             ),
           ),
+          ExpandButton(
+            isFloatingActionButton: true,
+            key: const ValueKey('button'),
+            onExpandOrCollapse: manager.expandOrCollapseAll,
+            isCollapsed: state.isCollapsed,
+          ),
+          const SizedBox(width: 28),
         ],
       ),
       body: OrientationBuilder(
@@ -121,7 +121,7 @@ class ProfileScreen extends ConsumerWidget {
                   children: [
                     Expanded(
                       flex: 1,
-                      child: bioWidget,
+                      child: SingleChildScrollView(child: bioWidget),
                     ),
                     Expanded(
                       flex: 4,

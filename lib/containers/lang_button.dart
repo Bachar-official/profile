@@ -22,6 +22,7 @@ class LangButton extends StatelessWidget {
                 key: const ValueKey('ru'),
                 message: localization.anotherLanguage,
                 child: CircleAvatar(
+                  minRadius: size,
                   maxRadius: size,
                   backgroundImage: Image.asset(
                     'assets/flags/RU.png',
@@ -34,6 +35,7 @@ class LangButton extends StatelessWidget {
                 key: const ValueKey('gb'),
                 message: localization.anotherLanguage,
                 child: CircleAvatar(
+                  minRadius: size,
                   maxRadius: size,
                   backgroundImage: Image.asset(
                     'assets/flags/GB.png',

@@ -19,7 +19,7 @@ class BioWidget extends StatelessWidget {
     final filter = ColorFilter.mode(
         brightness == Brightness.dark ? Colors.white : Colors.black,
         BlendMode.srcIn);
-    const size = 30.0;
+    const size = 25.0;
     const padding = EdgeInsets.symmetric(horizontal: 10.0);
 
     return Card(
@@ -53,8 +53,7 @@ class BioWidget extends StatelessWidget {
               fit: BoxFit.fitWidth,
               child: Text(
                 localize.position,
-                style: const TextStyle(
-                    fontStyle: FontStyle.italic, fontSize: size),
+                style: const TextStyle(fontSize: size),
               ),
             ),
           ),

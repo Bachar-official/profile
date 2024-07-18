@@ -21,13 +21,18 @@ class ExpandButton extends StatelessWidget {
           ? const Icon(key: ValueKey('expand'), Icons.expand_more)
           : const Icon(key: ValueKey('collapse'), Icons.expand_less),
     );
+    const size = 23.0;
 
     return Tooltip(
       message: isCollapsed ? localization.expandAll : localization.collapseAll,
       child: isFloatingActionButton == true
-          ? FloatingActionButton(
-              onPressed: onExpandOrCollapse,
-              child: icon,
+          ? SizedBox(
+              width: size,
+              height: size,
+              child: FloatingActionButton(
+                onPressed: onExpandOrCollapse,
+                child: icon,
+              ),
             )
           : IconButton(
               onPressed: onExpandOrCollapse,

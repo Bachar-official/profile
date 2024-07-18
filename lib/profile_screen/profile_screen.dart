@@ -93,6 +93,13 @@ class ProfileScreen extends ConsumerWidget {
     );
 
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      floatingActionButton: ExpandButton(
+        isFloatingActionButton: true,
+        key: const ValueKey('button'),
+        onExpandOrCollapse: manager.expandOrCollapseAll,
+        isCollapsed: state.isCollapsed,
+      ),
       appBar: AppBar(
         actions: [
           LangButton(locale: state.locales, onChangeLocale: manager.setLocales),
@@ -103,11 +110,6 @@ class ProfileScreen extends ConsumerWidget {
               onPressed: manager.downloadVCard,
               icon: const Icon(Icons.contact_mail),
             ),
-          ),
-          ExpandButton(
-            key: const ValueKey('button'),
-            onExpandOrCollapse: manager.expandOrCollapseAll,
-            isCollapsed: state.isCollapsed,
           ),
         ],
       ),

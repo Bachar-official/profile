@@ -9,11 +9,11 @@ enum Themes {
 }
 
 final ThemeData lightTheme = ThemeData(
-  colorScheme:
-      ColorScheme.fromSeed(seedColor: Colors.red, brightness: Brightness.light),
+  colorScheme: ColorScheme.fromSeed(
+      seedColor: Colors.teal.shade900, brightness: Brightness.light),
 );
 
 final ThemeData darkTheme = ThemeData(
-  colorScheme:
-      ColorScheme.fromSeed(seedColor: Colors.red, brightness: Brightness.dark),
+  colorScheme: ColorScheme.fromSeed(
+      seedColor: Colors.teal.shade900, brightness: Brightness.dark),
 );

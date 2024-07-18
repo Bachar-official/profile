@@ -20,6 +20,8 @@ class ProfileScreen extends ConsumerWidget {
     final locale = AppLocalizations.of(context);
 
     final bioWidget = BioWidget(
+      author: locale.author,
+      position: locale.position,
       onOpenEmail: manager.openEmail,
       onOpenGithub: manager.openGithub,
       onOpenTelegram: manager.openTelegram,
@@ -102,6 +104,13 @@ class ProfileScreen extends ConsumerWidget {
             child: IconButton(
               onPressed: manager.downloadVCard,
               icon: const Icon(Icons.contact_mail),
+            ),
+          ),
+          Tooltip(
+            message: 'PDF',
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.picture_as_pdf),
             ),
           ),
           ExpandButton(

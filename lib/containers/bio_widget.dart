@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BioWidget extends StatelessWidget {
+  final String author;
+  final String position;
   final Future<void> Function() onOpenGithub;
   final Future<void> Function() onOpenTelegram;
   final Future<void> Function() onOpenEmail;
   const BioWidget(
       {super.key,
+      required this.author,
+      required this.position,
       required this.onOpenGithub,
       required this.onOpenTelegram,
       required this.onOpenEmail});
 
   @override
   Widget build(BuildContext context) {
-    final localize = AppLocalizations.of(context);
     final brightness = Theme.of(context).brightness;
     final filter = ColorFilter.mode(
         brightness == Brightness.dark ? Colors.white : Colors.black,
@@ -40,7 +42,7 @@ class BioWidget extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Text(
-                  localize.author,
+                  author,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: size),
                 ),
@@ -52,7 +54,7 @@ class BioWidget extends StatelessWidget {
             child: FittedBox(
               fit: BoxFit.fitWidth,
               child: Text(
-                localize.position,
+                position,
                 style: const TextStyle(fontSize: size),
               ),
             ),

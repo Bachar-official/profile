@@ -13,6 +13,7 @@ class EducationStepper extends StatelessWidget {
     final List<Education> eds =
         localeStrings.map((e) => Education.fromLocale(e)).toList();
     return Stepper(
+      physics: const BouncingScrollPhysics(),
       stepIconMargin: EdgeInsets.zero,
       controlsBuilder: (_, __) => Container(),
       steps: eds

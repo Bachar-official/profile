@@ -17,6 +17,7 @@ class ExperienceStepper extends StatelessWidget {
     final List<Experience> xps =
         localeStrings.map((e) => Experience.fromLocalization(e)).toList();
     return Stepper(
+      physics: const BouncingScrollPhysics(),
       stepIconMargin: EdgeInsets.zero,
       controlsBuilder: (_, __) => Container(),
       steps: xps

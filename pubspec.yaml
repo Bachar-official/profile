@@ -1,5 +1,5 @@
 name: profile
-description: "A new Flutter project."
+description: "Profile page for my portfolio"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -70,6 +70,7 @@ flutter:
     - assets/flags/
     - assets/photos/
     - assets/services/
+    - assets/downloads/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -25,7 +25,9 @@ class ProfileScreen extends ConsumerWidget {
       onOpenTelegram: manager.openTelegram,
     );
     final experienceWidget = HideableWidget(
+      key: manager.experienceK,
       title: locale.experience,
+      trigger: manager.collectIsCollapsed,
       content: [
         ExperienceStepper(
             localeCode: locale.code,
@@ -34,21 +36,24 @@ class ProfileScreen extends ConsumerWidget {
       ],
     );
     final educationWidget = HideableWidget(
-      // controller: manager.educationC,
+      key: manager.educationK,
       title: locale.education,
+      trigger: manager.collectIsCollapsed,
       content: [
         EducationStepper(
             localeCode: locale.code, localeStrings: [locale.ed0, locale.ed1]),
       ],
     );
     final skillsWidget = HideableWidget(
-      // controller: manager.skillsC,
+      trigger: manager.collectIsCollapsed,
+      key: manager.skillsK,
       isRow: true,
       title: locale.hardSkills,
       content: hardSkills.map((skill) => Tag(text: skill)).toList(),
     );
     final courcesWidget = HideableWidget(
-      // controller: manager.coursesC,
+      trigger: manager.collectIsCollapsed,
+      key: manager.coursesK,
       title: locale.cources,
       content: courses
           .map(
@@ -57,19 +62,33 @@ class ProfileScreen extends ConsumerWidget {
           .toList(),
     );
     final languagesWidget = HideableWidget(
-      // controller: manager.langC,
+      trigger: manager.collectIsCollapsed,
+      key: manager.languagesK,
       title: locale.languages,
       content: [locale.lg0, locale.lg1, locale.lg2]
           .map((lg) => LanguageTile(localeString: lg))
           .toList(),
     );
     final hobbiesWidget = HideableWidget(
-      // controller: manager.hobbiesC,
+      trigger: manager.collectIsCollapsed,
+      key: manager.hobbiesK,
       isRow: true,
       title: locale.hobbies,
       content: locale.allHobbies
           .split(',')
-          .map((hobby) => Tag(text: hobby, color: Colors.orange))
+          .map(
+            (hobby) => Tag(text: hobby, color: Colors.orange),
+          )
+          .toList(),
+    );
+    final projectsWidget = HideableWidget(
+      trigger: manager.collectIsCollapsed,
+      key: manager.projectsK,
+      title: locale.projects,
+      content: [locale.pr0, locale.pr1, locale.pr2, locale.pr3]
+          .map(
+            (project) => ProjectTile(localeString: project),
+          )
           .toList(),
     );
 
@@ -78,6 +97,18 @@ class ProfileScreen extends ConsumerWidget {
         actions: [
           LangButton(locale: state.locales, onChangeLocale: manager.setLocales),
           ThemeButton(theme: state.themes, onChangeTheme: manager.setThemes),
+          Tooltip(
+            message: locale.downloadContact,
+            child: IconButton(
+              onPressed: manager.downloadVCard,
+              icon: const Icon(Icons.contact_mail),
+            ),
+          ),
+          ExpandButton(
+            key: const ValueKey('button'),
+            onExpandOrCollapse: manager.expandOrCollapseAll,
+            isCollapsed: state.isCollapsed,
+          ),
         ],
       ),
       body: OrientationBuilder(
@@ -102,6 +133,7 @@ class ProfileScreen extends ConsumerWidget {
                             educationWidget,
                             skillsWidget,
                             courcesWidget,
+                            projectsWidget,
                             languagesWidget,
                             hobbiesWidget,
                           ],
@@ -124,6 +156,7 @@ class ProfileScreen extends ConsumerWidget {
                           educationWidget,
                           skillsWidget,
                           courcesWidget,
+                          projectsWidget,
                           languagesWidget,
                           hobbiesWidget,
                         ],

@@ -3,13 +3,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ExpandButton extends StatelessWidget {
   final bool isCollapsed;
-  final void Function() onExpand;
-  final void Function() onCollapse;
+  final void Function() onExpandOrCollapse;
   const ExpandButton(
-      {super.key,
-      required this.isCollapsed,
-      required this.onCollapse,
-      required this.onExpand});
+      {super.key, required this.isCollapsed, required this.onExpandOrCollapse});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +13,7 @@ class ExpandButton extends StatelessWidget {
     return Tooltip(
       message: isCollapsed ? localization.expandAll : localization.collapseAll,
       child: IconButton(
-        onPressed: isCollapsed ? onExpand : onCollapse,
+        onPressed: onExpandOrCollapse,
         icon: AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
           child: isCollapsed

@@ -8,3 +8,4 @@ export 'education_stepper.dart';
 export 'course_tile.dart';
 export 'language_tile.dart';
 export 'expand_button.dart';
+export 'project_tile.dart';

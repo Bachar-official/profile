@@ -49,7 +49,7 @@ class ProfileManager {
 
   void downloadVCard() {
     downloadAsset(
-        asset: 'assets/downloads/contact.vcf',
+        asset: 'assets/assets/downloads/contact.vcf',
         fileName: 'Ivan Bacharnikov.vcf');
   }
 

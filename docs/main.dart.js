@@ -76326,7 +76326,7 @@ return A.ao(A.a_I($.aDD()),$async$wh)
 case 2:return A.a4(null,r)}})
 return A.a5($async$wh,r)},
 a9c(){var s=document,r=s.createElement("a")
-r.href="assets/downloads/contact.vcf"
+r.href="assets/assets/downloads/contact.vcf"
 r.target="blank"
 r.download="Ivan Bacharnikov.vcf"
 s=s.body

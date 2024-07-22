@@ -4,7 +4,6 @@ import 'package:profile/constants/urls.dart';
 import 'package:profile/containers/hideable_widget.dart';
 import 'package:profile/profile_screen/profile_holder.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:profile/utils/download_asset.dart';
 
 class ProfileManager {
   final ProfileHolder holder;
@@ -47,10 +46,13 @@ class ProfileManager {
     await launchUrl(Urls.emailUri);
   }
 
-  void downloadVCard() {
-    downloadAsset(
-        asset: 'assets/assets/downloads/contact.vcf',
-        fileName: 'Ivan Bacharnikov.vcf');
+  Future<void> downloadVCard() async {
+    await launchUrl(Urls.downloadVcardUri);
+  }
+
+  Future<void> downloadCV() async {
+    await launchUrl(
+        Urls.downloadCVUri(holder.oState.themes, holder.oState.locales));
   }
 
   void collectIsCollapsed() {

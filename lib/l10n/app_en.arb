@@ -30,6 +30,7 @@
     "collapseAll": "Collapse all",
     "expandAll": "Expand all",
     "downloadContact": "Download vCard",
+    "downloadCv": "Download CV",
     "projects": "Projects",
     "pr0": "QSO Logger;https://github.com/Bachar-official/flutter_qso;Flutter app for or logging radio HAM QSO",
     "pr1": "CASE (backend);https://github.com/Bachar-official/CASE-be;Backend Dart service for storing, updating and downloading apk files.",

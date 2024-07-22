@@ -30,6 +30,7 @@
     "collapseAll": "Скрыть все",
     "expandAll": "Развернуть все",
     "downloadContact": "Скачать vCard",
+    "downloadCv": "Скачать резюме",
     "projects": "Проекты",
     "pr0": "QSO Logger;https://github.com/Bachar-official/flutter_qso;Flutter приложение для ведения записей QSO.",
     "pr1": "CASE (backend);https://github.com/Bachar-official/CASE-be;Dart сервис для хранения, обновления и скачивания APK файлов.",

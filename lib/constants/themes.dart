@@ -6,6 +6,7 @@ enum Themes {
 
   ThemeData get theme => this == Themes.light ? lightTheme : darkTheme;
   Themes get next => this == Themes.light ? Themes.dark : Themes.light;
+  String get name => this == Themes.light ? 'light' : 'dark';
 }
 
 final ThemeData lightTheme = ThemeData(

@@ -8,4 +8,6 @@ enum Locales {
       this == Locales.ru ? const Locale('ru') : const Locale('en');
 
   Locales get next => this == Locales.ru ? Locales.en : Locales.ru;
+
+  String get name => this == Locales.ru ? 'ru' : 'en';
 }

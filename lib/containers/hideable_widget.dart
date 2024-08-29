@@ -46,7 +46,7 @@ class HideableWidgetState extends State<HideableWidget> {
 
     return Card(
       child: ExpansionTile(
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.zero,
             side: BorderSide.none,
           ),

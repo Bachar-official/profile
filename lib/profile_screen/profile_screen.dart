@@ -4,6 +4,7 @@ import 'package:profile/app/di.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:profile/constants/constants.dart';
 import 'package:profile/containers/index.dart';
+import 'package:profile/entity/course.dart';
 import './profile_holder.dart';
 import './profile_state.dart';
 
@@ -57,10 +58,9 @@ class ProfileScreen extends ConsumerWidget {
       trigger: manager.collectIsCollapsed,
       key: manager.coursesK,
       title: locale.cources,
-      content: courses
-          .map(
-            (course) => CourseTile(course: course, langCode: locale.code),
-          )
+      content: [locale.crs0, locale.crs1]
+          .map((loc) => Course.fromLocale(loc))
+          .map((course) => CourseTile(course: course, langCode: locale.code))
           .toList(),
     );
     final languagesWidget = HideableWidget(

@@ -34,5 +34,7 @@
     "pr0": "QSO Logger;https://github.com/Bachar-official/flutter_qso;Flutter app for or logging radio HAM QSO",
     "pr1": "CASE (backend);https://github.com/Bachar-official/CASE-be;Backend Dart service for storing, updating and downloading apk files.",
     "pr2": "CASE (frontend/mobile app);https://github.com/Bachar-official/case_fe;Frontend/Mobile app, client for CASE backend.",
-    "pr3": "CMD_BOT;https://github.com/Bachar-official/dart_cmd_bot;Telegram bot for remote maintenance of a work computer."
+    "pr3": "CMD_BOT;https://github.com/Bachar-official/dart_cmd_bot;Telegram bot for remote maintenance of a work computer.",
+    "crs0": "Flutter mobile developer;OTUS;2022-06-01",
+    "crs1": "Mobile development school [Flutter];Yandex;2024-08-01"
 }

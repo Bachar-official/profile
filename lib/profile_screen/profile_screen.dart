@@ -34,7 +34,7 @@ class ProfileScreen extends ConsumerWidget {
       content: [
         ExperienceStepper(
             localeCode: locale.code,
-            localeStrings: [locale.exp0, locale.exp1],
+            localeStrings: [locale.exp0, locale.exp1, locale.exp2],
             untilNow: locale.untilNow),
       ],
     );

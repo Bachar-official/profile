@@ -68,22 +68,19 @@ class EducationElement extends pw.StatelessWidget {
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
               pw.Text(
-                education.qualification,
+                education.specialization,
                 style: pw.Theme.of(context)
                     .defaultTextStyle
                     .copyWith(fontStyle: pw.FontStyle.italic),
               ),
               pw.SizedBox(height: 5),
               pw.Text(
-                education.specialization,
+                '${ParseUtils.parseGradeDate(education.gradeDate, locale.code)} · ${education.qualification}',
                 style: const pw.TextStyle(
                   fontSize: 10,
                   lineSpacing: 1.5,
                 ),
               ),
-              pw.SizedBox(height: 5),
-              pw.Text(
-                  ParseUtils.parseGradeDate(education.gradeDate, locale.code)),
             ],
           ),
         ),

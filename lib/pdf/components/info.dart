@@ -22,7 +22,7 @@ class Info extends pw.StatelessWidget {
         pw.SizedBox(height: 10),
         pw.Header(
           level: 0,
-          title: locale.experience,
+          title: locale.education,
           child: pw.Text(locale.education),
         ),
         EducationBlock(locale: locale),

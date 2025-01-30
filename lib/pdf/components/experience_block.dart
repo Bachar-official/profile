@@ -11,16 +11,21 @@ class ExperienceBlock extends pw.StatelessWidget {
 
   @override
   pw.Widget build(pw.Context context) {
-    final List<Experience> xps = [locale.exp0, locale.exp1, locale.exp2].map((e) => Experience.fromLocalization(e)).toList();
+    final List<Experience> xps = [locale.exp0, locale.exp1, locale.exp2]
+        .map((e) => Experience.fromLocalization(e))
+        .toList();
     return pw.Column(
       crossAxisAlignment: pw.CrossAxisAlignment.start,
-      children: xps.map((xp) => Job(
-        company: xp.companyName,
-        description: xp.description,
-        position: xp.position,
-        from: ParseUtils.parseDate(xp.from, locale.code, locale.untilNow),
-        to: ParseUtils.parseDate(xp.to, locale.code, locale.untilNow),
-      )).toList(),
+      children: xps
+          .map((xp) => Job(
+                company: xp.companyName,
+                description: xp.description,
+                position: xp.position,
+                from:
+                    ParseUtils.parseDate(xp.from, locale.code, locale.untilNow),
+                to: ParseUtils.parseDate(xp.to, locale.code, locale.untilNow),
+              ))
+          .toList(),
     );
   }
 }
@@ -59,7 +64,12 @@ class Job extends pw.StatelessWidget {
               ),
             ),
             pw.Flexible(
-              child: pw.Text(company),
+              child: pw.Text(
+                company,
+                style: pw.Theme.of(context)
+                    .defaultTextStyle
+                    .copyWith(fontWeight: pw.FontWeight.bold),
+              ),
             ),
           ],
         ),
@@ -74,7 +84,12 @@ class Job extends pw.StatelessWidget {
           child: pw.Column(
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
-              pw.Text(position),
+              pw.Text(
+                position,
+                style: pw.Theme.of(context)
+                    .defaultTextStyle
+                    .copyWith(fontStyle: pw.FontStyle.italic),
+              ),
               pw.SizedBox(height: 5),
               pw.Text(
                 description,

@@ -25,27 +25,39 @@ class Bio extends pw.StatelessWidget {
       child: pw.Column(
         children: [
           pw.Image(avatar, width: 100, height: 100),
-          pw.Text(locale.author),
-          pw.Text(locale.position),
+          pw.FittedBox(
+            fit: pw.BoxFit.scaleDown,
+            child: pw.Text(
+              locale.author,
+              style: pw.Theme.of(context)
+                  .defaultTextStyle
+                  .copyWith(fontWeight: pw.FontWeight.bold),
+            ),
+          ),
+          pw.FittedBox(
+            fit: pw.BoxFit.scaleDown,
+            child: pw.Text(locale.position),
+          ),
+          pw.SizedBox(height: 5),
           pw.Row(
             mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
             children: [
               pw.UrlLink(
                   child: pw.Text(
                     'T',
-                    style: pw.TextStyle(font: symbolFont),
+                    style: pw.TextStyle(font: symbolFont, fontSize: 15),
                   ),
                   destination: locale.tgLink),
               pw.UrlLink(
                   child: pw.Text(
                     'E',
-                    style: pw.TextStyle(font: symbolFont),
+                    style: pw.TextStyle(font: symbolFont, fontSize: 15),
                   ),
                   destination: locale.emailLink),
               pw.UrlLink(
                   child: pw.Text(
                     'G',
-                    style: pw.TextStyle(font: symbolFont),
+                    style: pw.TextStyle(font: symbolFont, fontSize: 15),
                   ),
                   destination: locale.githubLink),
             ],

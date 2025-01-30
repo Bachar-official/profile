@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pdf/pdf.dart';
 import 'package:profile/app/di.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:profile/constants/constants.dart';

@@ -15,6 +15,8 @@ Future<Uint8List> generateResume(BuildContext context) async {
   final locale = AppLocalizations.of(context);
   final doc = pw.Document(title: 'CV', author: 'Ivan Bacharnikov');
   final regularFont = await loadFont('assets/fonts/OpenSans-Regular.ttf');
+  final boldFont = await loadFont('assets/fonts/OpenSans-Bold.ttf');
+  final italicFont = await loadFont('assets/fonts/OpenSans-Italic.ttf');
   final symbolFont = await loadFont('assets/fonts/symbol.ttf');
 
   final avatar = await loadImage('assets/photos/avatar.png');
@@ -25,6 +27,8 @@ Future<Uint8List> generateResume(BuildContext context) async {
         margin: const pw.EdgeInsets.all(20),
         theme: pw.ThemeData.withFont(
           base: pw.Font.ttf(regularFont),
+          bold: pw.Font.ttf(boldFont),
+          italic: pw.Font.ttf(italicFont),
         ),
       ),
       build: (ctx) => [

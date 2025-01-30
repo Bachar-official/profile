@@ -22,23 +22,27 @@ Future<Uint8List> generateResume(BuildContext context) async {
   doc.addPage(
     pw.MultiPage(
       pageTheme: pw.PageTheme(
-        theme: pw.ThemeData.withFont(base: pw.Font.ttf(regularFont),),
+        margin: const pw.EdgeInsets.all(20),
+        theme: pw.ThemeData.withFont(
+          base: pw.Font.ttf(regularFont),
+        ),
       ),
       build: (ctx) => [
-        pw.Partitions(
+        pw.Row(
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
           children: [
-            pw.Partition(
-              child: pw.Row(
-                crossAxisAlignment: pw.CrossAxisAlignment.start,
-                children: [
-                  Bio(
-                    locale: locale,
-                    avatar: avatar,
-                    symbolFont: pw.Font.ttf(symbolFont),
-                  ),
-                  Info(locale: locale),
-                ],
+            pw.Flexible(
+              flex: 1,
+              child: Bio(
+                locale: locale,
+                avatar: avatar,
+                symbolFont: pw.Font.ttf(symbolFont),
               ),
+            ),
+            pw.SizedBox(width: 20),
+            pw.Flexible(
+              flex: 4,
+              child: Info(locale: locale),
             ),
           ],
         ),

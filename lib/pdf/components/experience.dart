@@ -13,6 +13,7 @@ class ExperienceBlock extends pw.StatelessWidget {
   pw.Widget build(pw.Context context) {
     final List<Experience> xps = [locale.exp0, locale.exp1, locale.exp2].map((e) => Experience.fromLocalization(e)).toList();
     return pw.Column(
+      crossAxisAlignment: pw.CrossAxisAlignment.start,
       children: xps.map((xp) => Job(
         company: xp.companyName,
         description: xp.description,
@@ -31,12 +32,13 @@ class Job extends pw.StatelessWidget {
   final String from;
   final String to;
 
-  Job(
-      {required this.company,
-      required this.description,
-      required this.from,
-      required this.position,
-      required this.to});
+  Job({
+    required this.company,
+    required this.description,
+    required this.from,
+    required this.position,
+    required this.to,
+  });
 
   @override
   pw.Widget build(pw.Context context) {
@@ -56,7 +58,9 @@ class Job extends pw.StatelessWidget {
                 shape: pw.BoxShape.circle,
               ),
             ),
-            pw.Text(company),
+            pw.Flexible(
+              child: pw.Text(company),
+            ),
           ],
         ),
         pw.Container(
@@ -71,7 +75,16 @@ class Job extends pw.StatelessWidget {
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
               pw.Text(position),
-              pw.Text(description, maxLines: 4),
+              pw.SizedBox(height: 5),
+              pw.Text(
+                description,
+                style: const pw.TextStyle(
+                  fontSize: 10,
+                  lineSpacing: 1.5,
+                ),
+              ),
+              pw.SizedBox(height: 5),
+              pw.Text('$from - $to'),
             ],
           ),
         ),

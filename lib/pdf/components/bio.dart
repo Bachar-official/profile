@@ -30,25 +30,26 @@ class Bio extends pw.StatelessWidget {
           pw.Row(
             mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
             children: [
-            pw.UrlLink(
-                child: pw.Text(
-                  'T',
-                  style: pw.TextStyle(font: symbolFont),
-                ),
-                destination: locale.tgLink),
-            pw.UrlLink(
-                child: pw.Text(
-                  'E',
-                  style: pw.TextStyle(font: symbolFont),
-                ),
-                destination: locale.emailLink),
-            pw.UrlLink(
-                child: pw.Text(
-                  'G',
-                  style: pw.TextStyle(font: symbolFont),
-                ),
-                destination: locale.githubLink),
-          ],),
+              pw.UrlLink(
+                  child: pw.Text(
+                    'T',
+                    style: pw.TextStyle(font: symbolFont),
+                  ),
+                  destination: locale.tgLink),
+              pw.UrlLink(
+                  child: pw.Text(
+                    'E',
+                    style: pw.TextStyle(font: symbolFont),
+                  ),
+                  destination: locale.emailLink),
+              pw.UrlLink(
+                  child: pw.Text(
+                    'G',
+                    style: pw.TextStyle(font: symbolFont),
+                  ),
+                  destination: locale.githubLink),
+            ],
+          ),
         ],
       ),
     );

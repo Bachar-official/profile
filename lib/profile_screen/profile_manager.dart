@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:profile/constants/constants.dart';
 import 'package:profile/constants/urls.dart';
 import 'package:profile/containers/hideable_widget.dart';
+import 'package:profile/pdf/generate_resume.dart';
 import 'package:profile/profile_screen/profile_holder.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -51,8 +52,9 @@ class ProfileManager {
   }
 
   Future<void> downloadCV() async {
-    await launchUrl(
-        Urls.downloadCVUri(holder.oState.themes, holder.oState.locales));
+    await downloadResume(scaffoldKey);
+    // await launchUrl(
+    //     Urls.downloadCVUri(holder.oState.themes, holder.oState.locales));
   }
 
   void collectIsCollapsed() {

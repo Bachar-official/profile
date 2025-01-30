@@ -38,5 +38,8 @@
     "pr2": "CASE (frontend/mobile app);https://github.com/Bachar-official/case_fe;Frontend/мобильное приложение, клиент для бэкенда CASE.",
     "pr3": "CMD_BOT;https://github.com/Bachar-official/dart_cmd_bot;Telegram бот для удалённого обслуживания рабочего компьютера.",
     "crs0": "Flutter mobile developer;OTUS;2022-06-01",
-    "crs1": "Школа мобильной разработки [Flutter];Яндекс;2024-08-01"
+    "crs1": "Школа мобильной разработки [Flutter];Яндекс;2024-08-01",
+    "tgLink": "https://t.me/Bachar_official",
+    "emailLink": "mailto:ibacharnikov@cinimex.ru",
+    "githubLink": "https://github.com/Bachar-official"
 }

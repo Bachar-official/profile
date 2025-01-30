@@ -8,6 +8,7 @@ import 'package:pdf/widgets.dart' as pw;
 import 'dart:html' as html;
 
 import 'package:profile/pdf/components/bio.dart';
+import 'package:profile/pdf/components/info.dart';
 import 'package:profile/utils/load_utils.dart';
 
 Future<Uint8List> generateResume(BuildContext context) async {
@@ -28,12 +29,14 @@ Future<Uint8List> generateResume(BuildContext context) async {
           children: [
             pw.Partition(
               child: pw.Row(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: [
                   Bio(
                     locale: locale,
                     avatar: avatar,
                     symbolFont: pw.Font.ttf(symbolFont),
                   ),
+                  Info(locale: locale),
                 ],
               ),
             ),

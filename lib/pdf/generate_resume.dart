@@ -7,7 +7,9 @@ import 'package:pdf/widgets.dart' as pw;
 import 'dart:html' as html;
 
 import 'package:profile/pdf/components/bio.dart';
+import 'package:profile/pdf/components/hobbies_block.dart';
 import 'package:profile/pdf/components/info.dart';
+import 'package:profile/pdf/components/languages_block.dart';
 import 'package:profile/pdf/components/projects_block.dart';
 import 'package:profile/utils/load_utils.dart';
 
@@ -18,8 +20,14 @@ Future<Uint8List> generateResume(BuildContext context) async {
   final boldFont = await loadFont('assets/fonts/OpenSans-Bold.ttf');
   final italicFont = await loadFont('assets/fonts/OpenSans-Italic.ttf');
   final symbolFont = await loadFont('assets/fonts/symbol.ttf');
+  final divider = pw.SizedBox(height: 15);
 
   final avatar = await loadImage('assets/photos/avatar.png');
+  final flags = {
+    'ru': await loadImage('assets/flags/RU.png'),
+    'en': await loadImage('assets/flags/GB.png'),
+    'eo': await loadImage('assets/flags/EO.jpg'),
+  };
 
   doc
     ..addPage(
@@ -74,6 +82,20 @@ Future<Uint8List> generateResume(BuildContext context) async {
                 child: pw.Text(locale.projects),
               ),
               ProjectsBlock(locale: locale),
+              divider,
+              pw.Header(
+                level: 0,
+                title: locale.languages,
+                child: pw.Text(locale.languages),
+              ),
+              LanguagesBlock(locale: locale, flags: flags),
+              divider,
+              pw.Header(
+                level: 0,
+                title: locale.hobbies,
+                child: pw.Text(locale.hobbies),
+              ),
+              HobbiesBlock(locale: locale),
             ],
           ),
         ],
@@ -91,7 +113,7 @@ Future<void> downloadResume(
     html.AnchorElement()
       ..href =
           "data:application/octet-stream;charset=utf-16le;base64,${base64.encode(arr)}"
-      ..setAttribute("download", "${DateTime.now().millisecondsSinceEpoch}.pdf")
+      ..setAttribute("download", "Ivan Bacharnikov.pdf")
       ..click();
   }
 }

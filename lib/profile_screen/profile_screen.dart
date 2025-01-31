@@ -79,7 +79,7 @@ class ProfileScreen extends ConsumerWidget {
       content: locale.allHobbies
           .split(',')
           .map(
-            (hobby) => Tag(text: hobby, color: Colors.orange),
+            (hobby) => Tag(text: hobby, color: const Color(0xFFFF9800)),
           )
           .toList(),
     );
@@ -96,10 +96,14 @@ class ProfileScreen extends ConsumerWidget {
 
     return state.isLoading
         ? Material(
-          child: Center(
-              child: Text(locale.pdfReady, textAlign: TextAlign.center, style: const TextStyle(fontSize: 24),),
+            child: Center(
+              child: Text(
+                locale.pdfReady,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 24),
+              ),
             ),
-        )
+          )
         : Scaffold(
             appBar: AppBar(
               actions: [

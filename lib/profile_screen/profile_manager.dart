@@ -52,9 +52,9 @@ class ProfileManager {
   }
 
   Future<void> downloadCV() async {
+    holder.setIsLoading(true);
     await downloadResume(scaffoldKey);
-    // await launchUrl(
-    //     Urls.downloadCVUri(holder.oState.themes, holder.oState.locales));
+    holder.setIsLoading(false);
   }
 
   void collectIsCollapsed() {

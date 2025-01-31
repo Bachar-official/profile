@@ -60,7 +60,7 @@ Future<Uint8List> generateResume(BuildContext context) async {
 Future<void> downloadResume(
     GlobalKey<ScaffoldMessengerState> scaffoldKey) async {
   if (kIsWeb) {
-    final pdf = await generateResume(scaffoldKey.currentContext!);
+    final pdf = await compute(generateResume, scaffoldKey.currentContext!);
     List<int> arr = List.from(pdf);
     html.AnchorElement()
       ..href =

@@ -19,4 +19,8 @@ class ProfileHolder extends StateNotifier<ProfileState> {
   void setIsCollapsed(bool isCollapsed) {
     state = state.copyWith(isCollapsed: isCollapsed);
   }
+
+  void setIsLoading(bool isLoading) {
+    state = state.copyWith(isLoading: isLoading);
+  }
 }

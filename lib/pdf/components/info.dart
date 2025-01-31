@@ -4,6 +4,7 @@ import 'package:profile/pdf/components/courses_block.dart';
 import 'package:profile/pdf/components/education_block.dart';
 import 'package:profile/pdf/components/experience_block.dart';
 import 'package:profile/pdf/components/hard_skills_block.dart';
+import 'package:profile/pdf/components/projects_block.dart';
 
 class Info extends pw.StatelessWidget {
   final AppLocalizations locale;

@@ -114,7 +114,7 @@ class ProfileScreen extends ConsumerWidget {
                 Tooltip(
                   message: locale.downloadContact,
                   child: IconButton(
-                    onPressed: () async => await manager.downloadVCard(),
+                    onPressed: manager.downloadVCard,
                     icon: const Icon(Icons.contact_mail),
                   ),
                 ),

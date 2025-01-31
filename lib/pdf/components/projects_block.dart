@@ -1,4 +1,3 @@
-import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:profile/entity/index.dart';

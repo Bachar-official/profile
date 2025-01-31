@@ -2,6 +2,10 @@
 
 My profile/portfolio page.
 
-## Open
+# Open
 
 [Click here](https://bachar-official.github.io/profile/)
+
+# Build
+
+`flutter build web --base-href "/profile/"`

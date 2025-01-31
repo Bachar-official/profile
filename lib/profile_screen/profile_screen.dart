@@ -79,7 +79,7 @@ class ProfileScreen extends ConsumerWidget {
       content: locale.allHobbies
           .split(',')
           .map(
-            (hobby) => Tag(text: hobby, color: Colors.orange),
+            (hobby) => Tag(text: hobby, color: const Color(0xFFFF9800)),
           )
           .toList(),
     );
@@ -94,89 +94,101 @@ class ProfileScreen extends ConsumerWidget {
           .toList(),
     );
 
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          LangButton(locale: state.locales, onChangeLocale: manager.setLocales),
-          ThemeButton(theme: state.themes, onChangeTheme: manager.setThemes),
-          Tooltip(
-            message: locale.downloadContact,
-            child: IconButton(
-              onPressed: () async => await manager.downloadVCard(),
-              icon: const Icon(Icons.contact_mail),
+    return state.isLoading
+        ? Material(
+            child: Center(
+              child: Text(
+                locale.pdfReady,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 24),
+              ),
             ),
-          ),
-          Tooltip(
-            message: locale.downloadCv,
-            child: IconButton(
-              onPressed: () async => await manager.downloadCV(),
-              icon: const Icon(Icons.picture_as_pdf),
+          )
+        : Scaffold(
+            appBar: AppBar(
+              actions: [
+                LangButton(
+                    locale: state.locales, onChangeLocale: manager.setLocales),
+                ThemeButton(
+                    theme: state.themes, onChangeTheme: manager.setThemes),
+                Tooltip(
+                  message: locale.downloadContact,
+                  child: IconButton(
+                    onPressed: manager.downloadVCard,
+                    icon: const Icon(Icons.contact_mail),
+                  ),
+                ),
+                Tooltip(
+                  message: locale.downloadCv,
+                  child: IconButton(
+                    onPressed: () async => await manager.downloadCV(),
+                    icon: const Icon(Icons.picture_as_pdf),
+                  ),
+                ),
+                ExpandButton(
+                  isFloatingActionButton: true,
+                  key: const ValueKey('button'),
+                  onExpandOrCollapse: manager.expandOrCollapseAll,
+                  isCollapsed: state.isCollapsed,
+                ),
+                const SizedBox(width: 28),
+              ],
             ),
-          ),
-          ExpandButton(
-            isFloatingActionButton: true,
-            key: const ValueKey('button'),
-            onExpandOrCollapse: manager.expandOrCollapseAll,
-            isCollapsed: state.isCollapsed,
-          ),
-          const SizedBox(width: 28),
-        ],
-      ),
-      body: OrientationBuilder(
-        builder: (context, orientation) {
-          return orientation == Orientation.landscape
-              ? Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: SingleChildScrollView(child: bioWidget),
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: SingleChildScrollView(
+            body: OrientationBuilder(
+              builder: (context, orientation) {
+                return orientation == Orientation.landscape
+                    ? Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: SingleChildScrollView(child: bioWidget),
+                          ),
+                          Expanded(
+                            flex: 4,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  experienceWidget,
+                                  educationWidget,
+                                  skillsWidget,
+                                  courcesWidget,
+                                  projectsWidget,
+                                  languagesWidget,
+                                  hobbiesWidget,
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    : SingleChildScrollView(
                         child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            experienceWidget,
-                            educationWidget,
-                            skillsWidget,
-                            courcesWidget,
-                            projectsWidget,
-                            languagesWidget,
-                            hobbiesWidget,
+                            bioWidget,
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                experienceWidget,
+                                educationWidget,
+                                skillsWidget,
+                                courcesWidget,
+                                projectsWidget,
+                                languagesWidget,
+                                hobbiesWidget,
+                              ],
+                            ),
                           ],
                         ),
-                      ),
-                    ),
-                  ],
-                )
-              : SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      bioWidget,
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          experienceWidget,
-                          educationWidget,
-                          skillsWidget,
-                          courcesWidget,
-                          projectsWidget,
-                          languagesWidget,
-                          hobbiesWidget,
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-        },
-      ),
-    );
+                      );
+              },
+            ),
+          );
   }
 }

@@ -10,6 +10,7 @@ enum Themes {
 }
 
 final ThemeData lightTheme = ThemeData(
+  fontFamily: 'OpenSans',
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
     primary: Colors.black,
@@ -35,6 +36,7 @@ final ThemeData lightTheme = ThemeData(
 );
 
 final ThemeData darkTheme = ThemeData(
+  fontFamily: 'OpenSans',
   colorScheme: const ColorScheme(
     brightness: Brightness.dark,
     primary: Colors.white,
